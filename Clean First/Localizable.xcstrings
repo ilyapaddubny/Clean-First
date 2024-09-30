@@ -1,0 +1,15 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "breed is a lifestyle" : {
+      "comment" : "Subtitle on the start screen"
+    },
+    "Войти" : {
+      "comment" : "Login button text"
+    },
+    "Зарегистрироваться" : {
+      "comment" : "Register button text"
+    }
+  },
+  "version" : "1.0"
+}
