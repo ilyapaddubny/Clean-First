@@ -18,6 +18,10 @@
 		2D0CE8AF2CA709E10043934E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2D0CE8AE2CA709E10043934E /* Localizable.xcstrings */; };
 		2D0CE8B22CA70A9B0043934E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CE8B12CA70A9A0043934E /* Constants.swift */; };
 		2D2C0AB82CA7155A00285DA3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2D2C0AB72CA7155A00285DA3 /* SnapKit */; };
+		2D2C0ABA2CAAF45000285DA3 /* PresentModalLoginAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C0AB92CAAF45000285DA3 /* PresentModalLoginAnimation.swift */; };
+		2D2C0ABC2CAAF47D00285DA3 /* CustomDismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C0ABB2CAAF47D00285DA3 /* CustomDismissAnimation.swift */; };
+		2D2C0ABE2CAC90D200285DA3 /* PresentModalRegisterAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C0ABD2CAC90D200285DA3 /* PresentModalRegisterAnimation.swift */; };
+		2D2C0AC02CAC94EE00285DA3 /* BaseModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C0ABF2CAC94EE00285DA3 /* BaseModalViewController.swift */; };
 		2D489A112C985F0000F6DA68 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D489A0B2C985F0000F6DA68 /* LoginPresenter.swift */; };
 		2D489A122C985F0000F6DA68 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D489A0C2C985F0000F6DA68 /* LoginWorker.swift */; };
 		2D489A132C985F0000F6DA68 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D489A0D2C985F0000F6DA68 /* LoginRouter.swift */; };
@@ -66,6 +70,10 @@
 		2D0CE8A52CA7089D0043934E /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		2D0CE8AE2CA709E10043934E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2D0CE8B12CA70A9A0043934E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2D2C0AB92CAAF45000285DA3 /* PresentModalLoginAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentModalLoginAnimation.swift; sourceTree = "<group>"; };
+		2D2C0ABB2CAAF47D00285DA3 /* CustomDismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDismissAnimation.swift; sourceTree = "<group>"; };
+		2D2C0ABD2CAC90D200285DA3 /* PresentModalRegisterAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentModalRegisterAnimation.swift; sourceTree = "<group>"; };
+		2D2C0ABF2CAC94EE00285DA3 /* BaseModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModalViewController.swift; sourceTree = "<group>"; };
 		2D489A0B2C985F0000F6DA68 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		2D489A0C2C985F0000F6DA68 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		2D489A0D2C985F0000F6DA68 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
@@ -137,6 +145,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		2D2C0AC12CAC95E200285DA3 /* ModalView */ = {
+			isa = PBXGroup;
+			children = (
+				2D2C0ABF2CAC94EE00285DA3 /* BaseModalViewController.swift */,
+				2D2C0ABD2CAC90D200285DA3 /* PresentModalRegisterAnimation.swift */,
+				2D2C0AB92CAAF45000285DA3 /* PresentModalLoginAnimation.swift */,
+				2D2C0ABB2CAAF47D00285DA3 /* CustomDismissAnimation.swift */,
+			);
+			path = ModalView;
+			sourceTree = "<group>";
+		};
 		2D489A172C985F0E00F6DA68 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +185,7 @@
 		2DAAAF242CA3F99F007480D6 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				2D2C0AC12CAC95E200285DA3 /* ModalView */,
 				2DAAAF222CA3F7B2007480D6 /* BSButton.swift */,
 			);
 			path = CustomViews;
@@ -306,11 +326,13 @@
 				2DDEC1E82C933AFA00FC7699 /* AppDelegate.swift in Sources */,
 				2D0CE8B22CA70A9B0043934E /* Constants.swift in Sources */,
 				2D0CE8A72CA7089D0043934E /* RegisterWorker.swift in Sources */,
+				2D2C0AC02CAC94EE00285DA3 /* BaseModalViewController.swift in Sources */,
 				2DDEC1F22C933AFA00FC7699 /* Clean_First.xcdatamodeld in Sources */,
 				2DDEC1EA2C933AFA00FC7699 /* SceneDelegate.swift in Sources */,
 				2D489A112C985F0000F6DA68 /* LoginPresenter.swift in Sources */,
 				2D489A132C985F0000F6DA68 /* LoginRouter.swift in Sources */,
 				2D489A162C985F0000F6DA68 /* LoginInteractor.swift in Sources */,
+				2D2C0ABA2CAAF45000285DA3 /* PresentModalLoginAnimation.swift in Sources */,
 				2DAAAF1C2CA31A46007480D6 /* StartScreenViewController.swift in Sources */,
 				2DAAAF1A2CA31A46007480D6 /* StartScreenRouter.swift in Sources */,
 				2DAAAF282CA40020007480D6 /* TextStyle.swift in Sources */,
@@ -322,7 +344,9 @@
 				2D0CE8AB2CA7089D0043934E /* RegisterInteractor.swift in Sources */,
 				2DAAAF192CA31A46007480D6 /* StartScreenWorker.swift in Sources */,
 				2D489A122C985F0000F6DA68 /* LoginWorker.swift in Sources */,
+				2D2C0ABC2CAAF47D00285DA3 /* CustomDismissAnimation.swift in Sources */,
 				2DAAAF1D2CA31A46007480D6 /* StartScreenInteractor.swift in Sources */,
+				2D2C0ABE2CAC90D200285DA3 /* PresentModalRegisterAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,6 +4,7 @@ import SnapKit
 protocol StartScreenDisplayLogic: AnyObject {
     func displayLoginScreen(viewModel: StartScreen.Login.ViewModel)
     func displayRegisterScreen(viewModel: StartScreen.Register.ViewModel)
+    
 }
 
 class StartScreenViewController: UIViewController, UIViewControllerTransitioningDelegate {
@@ -110,7 +111,7 @@ class StartScreenViewController: UIViewController, UIViewControllerTransitioning
         
         
         appIconImageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(25)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(74)
             

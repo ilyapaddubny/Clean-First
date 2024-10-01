@@ -17,7 +17,7 @@ protocol LoginDisplayLogic: AnyObject
     func displaySomething(viewModel: Login.LoginAction.ViewModel)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
+class LoginViewController: BaseModalViewController, LoginDisplayLogic
 {
     func displaySomething(viewModel: Login.LoginAction.ViewModel) {
         
@@ -94,12 +94,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     }
     
     
-    private func setupUI() {
-        
-        view.backgroundColor = .white
-        // Add subviews
-        view.backgroundColor = .white
-        
+    internal override func setupUI() {
+        super.setupUI()
+        // Add subviews        
         view.addSubview(appIconImageView)
         view.addSubview(titleImageView)
         view.addSubview(subtitleLabel)

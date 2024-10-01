@@ -26,30 +26,57 @@ class StartScreenRouter: NSObject, StartScreenRoutingLogic, StartScreenDataPassi
     weak var viewController: StartScreenViewController?
     var dataStore: StartScreenDataStore?
     
+    private enum Route {
+            case login
+            case register
+        }
+    private var currentRoute: Route?
+
+    
     // MARK: - Routing to Login Screen
     func routeToLogin() {
         let loginVC = LoginViewController()
+        currentRoute = .login
         navigateToLogin(source: viewController!, destination: loginVC)
     }
     
     // MARK: - Routing to Register Screen
     func routeToRegister() {
-        let registerVC = RegisterViewController() 
+        let registerVC = RegisterViewController()
+        currentRoute = .register
         navigateToRegister(source: viewController!, destination: registerVC)
-
+        
     }
     
     // MARK: - Navigation Methods
     
-    private func navigateToLogin(source: StartScreenViewController, destination: LoginViewController) {
-        source.navigationController?.pushViewController(destination, animated: true)
-    }
-    
-    private func navigateToRegister(source: StartScreenViewController, destination: RegisterViewController) {
-//        source.navigationController?.pushViewController(destination, animated: true)
-        //TODO: add the modal view conntroller here
+    private func navigateToLogin(source: StartScreenViewController, destination: BaseModalViewController) {
+        //        source.navigationController?.pushViewController(destination, animated: true)
         destination.modalPresentationStyle = .custom
         destination.transitioningDelegate = self
         source.present(destination, animated: true, completion: nil)
+    }
+    
+    private func navigateToRegister(source: StartScreenViewController, destination: BaseModalViewController) {
+        //        source.navigationController?.pushViewController(destination, animated: true)
+        destination.modalPresentationStyle = .custom
+        destination.transitioningDelegate = self
+        source.present(destination, animated: true, completion: nil)
+    }
+    
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        switch currentRoute {
+                case .login:
+                    return PresentModalLoginAnimation() // Use login animation
+                case .register:
+                    return PresentModalRegisterAnimation() // Use register animation
+                default:
+                    return nil
+                }
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return CustomDismissAnimation()
     }
 }

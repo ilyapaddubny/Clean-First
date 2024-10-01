@@ -17,37 +17,18 @@ protocol RegisterDisplayLogic: AnyObject
     func displaySomething(viewModel: Register.Something.ViewModel)
 }
 
-class RegisterViewController: UIViewController, RegisterDisplayLogic
+class RegisterViewController: BaseModalViewController, RegisterDisplayLogic
 {
+    
+//    private var isFullScreen = false
+
+    func displaySomething(viewModel: Register.Something.ViewModel) {
+        
+    }
+    
     var interactor: RegisterBusinessLogic?
     var router: (NSObjectProtocol & RegisterRoutingLogic & RegisterDataPassing)?
     
-    // UI Elements
-    private let appIconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.Common.iconName)
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let titleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.Common.titleImageName)
-        imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.attributedText = Constants.Common.slogan.styled(as: .bodySemiBold14)
-        label.textColor = .neutrals5
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
     
     // MARK: Object lifecycle
     
@@ -84,53 +65,7 @@ class RegisterViewController: UIViewController, RegisterDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doSomething()
-        setupUI()
     }
     
-    private func setupUI() {
-        
-        view.backgroundColor = .white
-        
-        view.addSubview(appIconImageView)
-        view.addSubview(titleImageView)
-        view.addSubview(subtitleLabel)
-        
-        appIconImageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(74)
-            
-        }
-        
-        titleImageView.snp.makeConstraints { make in
-            make.top.equalTo(appIconImageView.snp.bottom).offset(16)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(200)
-            make.height.equalTo(24.5)
-        }
-        
-        subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleImageView.snp.bottom).offset(22)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-        }
-        
-        
-    }
-    
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething()
-    {
-        let request = Register.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displaySomething(viewModel: Register.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
-    }
 }
+
