@@ -4,11 +4,26 @@
     "breed is a lifestyle" : {
       "comment" : "Subtitle on the start screen"
     },
+    "Email" : {
+      "comment" : "Login button text"
+    },
+    "Введите свои персональные данные, чтобы продолжить." : {
+      "comment" : "Login button text"
+    },
     "Войти" : {
+      "comment" : "Login button text"
+    },
+    "Добро пожаловать!" : {
+      "comment" : "Login button text"
+    },
+    "Забыли пароль?" : {
       "comment" : "Login button text"
     },
     "Зарегистрироваться" : {
       "comment" : "Register button text"
+    },
+    "Пароль" : {
+      "comment" : "Login button text"
     }
   },
   "version" : "1.0"

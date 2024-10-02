@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PresentModalLoginAnimation: NSObject, UIViewControllerAnimatedTransitioning {
+class PresentModalPartlyCoveringAnimation: NSObject, UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3 // Duration of the animation

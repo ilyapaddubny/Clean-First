@@ -68,9 +68,9 @@ class StartScreenRouter: NSObject, StartScreenRoutingLogic, StartScreenDataPassi
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch currentRoute {
                 case .login:
-                    return PresentModalLoginAnimation() // Use login animation
+                    return PresentModalPartlyCoveringAnimation() // Use login animation
                 case .register:
-                    return PresentModalRegisterAnimation() // Use register animation
+                    return PresentModalFullScreenAnimation() // Use register animation
                 default:
                     return nil
                 }

@@ -16,7 +16,6 @@ class StartScreenViewController: UIViewController, UIViewControllerTransitioning
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.Common.iconName)
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -24,7 +23,6 @@ class StartScreenViewController: UIViewController, UIViewControllerTransitioning
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.Common.titleImageName)
         imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -34,7 +32,6 @@ class StartScreenViewController: UIViewController, UIViewControllerTransitioning
         label.textColor = .neutrals5
         label.textAlignment = .center
         label.numberOfLines = 0 
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -42,21 +39,18 @@ class StartScreenViewController: UIViewController, UIViewControllerTransitioning
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.StartScreen.startScreenImageName)
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private let loginButton: UIButton = {
         let button = RoundedButton(style: .blueBackground)
-        button.setTitle(Constants.StartScreen.loginButtonTitle, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(Constants.Common.loginButtonTitle, for: .normal)
         return button
     }()
     
     private let registerButton: UIButton = {
         let button = RoundedButton(style: .blueBackground)
         button.setTitle(Constants.StartScreen.registerButtonTitle, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -140,14 +134,12 @@ class StartScreenViewController: UIViewController, UIViewControllerTransitioning
             make.centerX.equalToSuperview()
             make.bottom.equalTo(registerButton.snp.top).offset(-20)
             make.width.equalTo(260)
-            make.height.equalTo(50)
         }
         
         registerButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
             make.width.equalTo(260)
-            make.height.equalTo(50)
         }
     }
     

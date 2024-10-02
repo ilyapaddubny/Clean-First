@@ -39,6 +39,9 @@ class RoundedButton: UIButton {
             layer.borderWidth = 2
             layer.borderColor = UIColor.systemBlue.cgColor
         }
+        
+        heightAnchor.constraint(equalToConstant: 50).isActive = true
+
     }
     
     func setTitle(_ title: String) {

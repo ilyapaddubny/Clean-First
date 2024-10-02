@@ -11,48 +11,56 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol LoginDisplayLogic: AnyObject
 {
     func displaySomething(viewModel: Login.LoginAction.ViewModel)
 }
 
-class LoginViewController: BaseModalViewController, LoginDisplayLogic
+class LoginViewController: BaseModalViewController
 {
-    func displaySomething(viewModel: Login.LoginAction.ViewModel) {
-        
-    }
-    
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     // UI Elements
-    private let appIconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.Common.iconName)
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let titleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.Common.titleImageName)
-        imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let subtitleLabel: UILabel = {
+    private let welcomeLabel: UILabel = {
         let label = UILabel()
-        label.attributedText = Constants.Common.slogan.styled(as: .bodySemiBold14)
-        label.textColor = .neutrals5
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.attributedText = Constants.LoginScreen.welcome.styled(as: .headline4Bold18)
+        label.textColor = .white
         return label
     }()
     
+    private let instructionLabel: UILabel = {
+        let label = UILabel()
+        label.attributedText = Constants.LoginScreen.inputYourCredentials.styled(as: .bodyRegular14)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textColor = .white
+        return label
+    }()
+    
+    private let emailTextField = CustomTextField(label: Constants.LoginScreen.emailHint, icon: .person)
+    
+    private let passwordTextField = CustomTextField(label: Constants.LoginScreen.passwordHint, icon: .lock)
+    
+    private let forgotPasswordButton: UIButton = {
+        let button = UIButton()
+        let attributedTitle = Constants.LoginScreen.forgotPassword.styled(as: .bodySemiBold14)
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
+    private let loginButton: UIButton = {
+        let button = RoundedButton(style: .whiteBackground)
+        button.setTitle(Constants.Common.loginButtonTitle, for: .normal)
+        return button
+    }()
+    
+    private  lazy var buttonStackView = UIStackView(arrangedSubviews: [self.forgotPasswordButton, self.loginButton])
+
     
     // MARK: Object lifecycle
     
@@ -96,37 +104,67 @@ class LoginViewController: BaseModalViewController, LoginDisplayLogic
     
     internal override func setupUI() {
         super.setupUI()
-        // Add subviews        
-        view.addSubview(appIconImageView)
-        view.addSubview(titleImageView)
-        view.addSubview(subtitleLabel)
+
+        // Add subviews
+        view.addSubview(welcomeLabel)
+        view.addSubview(instructionLabel)
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
         
+        buttonStackView = UIStackView(arrangedSubviews: [forgotPasswordButton, loginButton])
+        buttonStackView.axis = .horizontal
+        buttonStackView.distribution = .fillEqually
+        buttonStackView.spacing = 20
+        view.addSubview(buttonStackView)
+
+        setupConstraints()
         
-        appIconImageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(74)
-            
-        }
-        
-        titleImageView.snp.makeConstraints { make in
-            make.top.equalTo(appIconImageView.snp.bottom).offset(16)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(200)
-            make.height.equalTo(24.5)
-        }
-        
-        subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleImageView.snp.bottom).offset(22)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-        }
-        
-        
-        func displaySomething(viewModel: Login.LoginAction.ViewModel)
-        {
-            //nameTextField.text = viewModel.name
-        }
     }
     
+    
+    
+    private func setupConstraints() {
+        // Welcome Label
+        welcomeLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
+            make.leading.equalTo(view).offset(20)
+        }
+        
+        // Instruction Label
+        instructionLabel.snp.makeConstraints { make in
+            make.top.equalTo(welcomeLabel.snp.bottom).offset(22)
+            make.leading.equalTo(view).offset(20)
+            make.trailing.equalTo(view).offset(-20)
+
+        }
+        
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(instructionLabel.snp.bottom).offset(30)
+            make.leading.equalTo(instructionLabel)
+            make.trailing.equalTo(view).offset(-20)
+        }
+        
+        // Password TextField
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(16)
+            make.leading.equalTo(emailTextField)
+            make.trailing.equalTo(view).offset(-20)
+        }
+        
+        // Button Stack View
+            buttonStackView.snp.makeConstraints { make in
+              make.leading.equalTo(emailTextField)
+              make.trailing.equalTo(emailTextField)
+              make.bottom.equalTo(view).inset(60)
+            }
+    }
+    
+    
+}
+
+
+extension LoginViewController: LoginDisplayLogic {
+    func displaySomething(viewModel: Login.LoginAction.ViewModel) {
+        
+    }
 }

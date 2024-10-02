@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PresentModalRegisterAnimation: NSObject, UIViewControllerAnimatedTransitioning {
+class PresentModalFullScreenAnimation: NSObject, UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3 // Duration of the animation

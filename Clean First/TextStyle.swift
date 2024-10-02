@@ -11,6 +11,14 @@ import UIKit
 
 enum TextStyle {
     
+    case headline1Bold26
+    case headline2Bold24
+    case headline3Bold20
+    case headline4Bold18
+    case headline4SemiBold18
+    case headline5Bold16
+    case headline6SemiBold14
+    
     case bodyRegular24
     case bodyBold24
     case bodyRegular14
@@ -108,6 +116,68 @@ enum TextStyle {
                 .paragraphStyle: paragraphStyle,
                 .kern: 0
             ]
+        case .headline1Bold26:
+                    let font = UIFont(name: "Montserrat-Bold", size: 26) ?? UIFont.systemFont(ofSize: 26, weight: .bold)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 38 - 26
+                    return [
+                        .font: font,
+                        .paragraphStyle: paragraphStyle,
+                    ]
+                    
+                case .headline2Bold24:
+                    let font = UIFont(name: "Montserrat-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24, weight: .bold)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 36 - 24
+                    return [
+                        .font: font,
+                        .paragraphStyle: paragraphStyle,
+                    ]
+
+                case .headline3Bold20:
+                    let font = UIFont(name: "Montserrat-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .bold)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 36 - 20
+                    return [
+                        .font: font,
+                        .paragraphStyle: paragraphStyle,
+                    ]
+
+                case .headline4Bold18:
+                    let font = UIFont(name: "Montserrat-Bold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .bold)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 34 - 18
+                    return [
+                        .font: font,
+                        .paragraphStyle: paragraphStyle,
+                    ]
+                    
+                case .headline4SemiBold18:
+                    let font = UIFont(name: "Montserrat-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 34 - 18
+                    return [
+                        .font: font,
+                        .paragraphStyle: paragraphStyle,
+                    ]
+                    
+                case .headline5Bold16:
+                    let font = UIFont(name: "Montserrat-Bold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .bold)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 34 - 16
+                    return [
+                        .font: font,
+                        .paragraphStyle: paragraphStyle,
+                    ]
+                    
+                case .headline6SemiBold14:
+                    let font = UIFont(name: "Montserrat-SemiBold", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: .semibold)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 24 - 14
+                    return [
+                        .font: font,
+                        .paragraphStyle: paragraphStyle,
+                    ]
         }
     }
 }
