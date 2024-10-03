@@ -98,12 +98,18 @@ class LoginViewController: BaseModalViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
         setupUI()
     }
     
     
     internal override func setupUI() {
         super.setupUI()
+        
+        
 
         // Add subviews
         view.addSubview(welcomeLabel)
@@ -166,5 +172,19 @@ class LoginViewController: BaseModalViewController
 extension LoginViewController: LoginDisplayLogic {
     func displaySomething(viewModel: Login.LoginAction.ViewModel) {
         
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    // Handle the "Return" key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()  // Dismiss the keyboard
+        return true
+    }
+    
+    // Validate as user types
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Add your validation logic here
+        return true  // Or false if validation fails
     }
 }
