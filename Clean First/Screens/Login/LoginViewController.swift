@@ -22,6 +22,7 @@ class LoginViewController: BaseModalViewController
 {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+
     
     // UI Elements
     private let welcomeLabel: UILabel = {
@@ -99,9 +100,10 @@ class LoginViewController: BaseModalViewController
     {
         super.viewDidLoad()
         
+        
+        
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
         setupUI()
     }
     
@@ -166,6 +168,7 @@ class LoginViewController: BaseModalViewController
     }
     
     
+    
 }
 
 
@@ -188,3 +191,5 @@ extension LoginViewController: UITextFieldDelegate {
         return true  // Or false if validation fails
     }
 }
+
+
